@@ -1,0 +1,82 @@
+{
+	"video" : ["FC3jDupWk70","29noUkbHdaw","7nhtmGODZBc"],
+	"api" : "https://www.fanily.tw/",
+	"nav" : {
+		"chai-info" : "釵介紹",
+		"cast" : "【正冊】賈寶玉與十二金釵",
+		"beauty" : "【副冊】十二美釵",
+		"fanily-post" : "墜入幻遊趴",
+		"party-post" : "派對咖指南",
+		"ticket-info" : "買票喝酒啦",
+		"social-wall" : "#釵"
+	},
+	"beauty" : [
+		"十二美釵—林青軒",
+		"十二美釵—柯朋宇",
+		"十二美釵—洪浩竣",
+		"十二美釵—黃小紜",
+		"十二美釵—文佳琇",
+		"十二美釵—吳亞臻",
+		"十二美釵—呂丹檸",
+		"十二美釵—邱忠裕",
+		"十二美釵—黃靖雯",
+		"十二美釵—蔡郁賦",
+		"十二美釵—謝宜庭"
+	],
+	"keywords" : {
+		"fanily-post" : [
+			{
+				"tab": "名人推薦",
+				"keyword": "釵名人推薦",
+				"current": true
+			},
+			{
+				"tab": "設計介紹",
+				"keyword": "釵設計概念",
+				"current": false
+			},
+			{
+				"tab": "釵人物專訪",
+				"keyword": "十二金釵正冊",
+				"current": false
+			},
+			{
+				"tab": "新聞報導",
+				"keyword": "釵新聞報導",
+				"current": false
+			},
+			{
+				"tab": "排練花絮",
+				"keyword": "釵演員日記",
+				"current": false
+			}
+		],
+		"party-post" : [
+			{
+				"tab": "十二美釵選拔",
+				"keyword": "十二美釵總決選",
+				"current": true
+			},
+			{
+				"tab": "釵級比一比",
+				"keyword": "釵級比一比",
+				"current": false
+			},
+			{
+				"tab": "DJ 蕾蕾選歌",
+				"keyword": "蕾蕾選歌",
+				"current": false
+			},
+			{
+				"tab": "派對動物必看",
+				"keyword": "派對動物必看",
+				"current": false
+			},
+			{
+				"tab": "釵解派對",
+				"keyword": "釵解派對",
+				"current": false
+			}
+		]
+	}
+}
