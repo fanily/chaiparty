@@ -49,7 +49,7 @@ jQuery(function($){
 				}
 			});
 		}else{
-	    	$.getScript("/js/jquery.tubular.min.js?t=2").done(function() {
+	    	$.getScript("js/jquery.tubular.min.js?t=2").done(function() {
 				$('#background-video').tubular({videoId: config.video[0] , mute : false});
 				window.addEventListener('scroll', scroll_to_mute , false);
 			});
@@ -72,8 +72,8 @@ jQuery(function($){
 		var beauty_html = "";
 		$.each(config.beauty, function(k,title){
 			k++;
-			beauty_html += '<a href="/img/beauty/'+k+'.jpg" data-sub-html="'+title+'">';
-			beauty_html += '<img src="/img/beauty/thumb/'+k+'.jpg">';
+			beauty_html += '<a href="img/beauty/'+k+'.jpg" data-sub-html="'+title+'">';
+			beauty_html += '<img src="img/beauty/thumb/'+k+'.jpg">';
 			beauty_html += '</a>';
 		});
 		$('#imageGallery').append(beauty_html).lightGallery({
@@ -115,7 +115,7 @@ jQuery(function($){
 							}
 							var data = temp[$this];
 							if (data.post_image == '') {
-								data.post_image = '/img/default-post-image.png';
+								data.post_image = 'img/default-post-image.png';
 							}
 							html += '<div class="post-block grid-item">';
 							html += '<a href="https://www.fanily.tw/post/'+data.id+'" target="_blank">';
