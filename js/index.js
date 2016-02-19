@@ -129,14 +129,14 @@ jQuery(function($){
 					}
 
 					html += '</div>';
-					$('#'+id+' .tab').prepend(tab_html);
-					$('#'+id+' .post-container').prepend(html);
+					$('#'+id+' .tab').append(tab_html);
+					$('#'+id+' .post-container').append(html);
 					if (v.current) {
 						setTimeout(function() {
 							$('#'+id+' .post-container .current').find('.grid').masonry({
 								"itemSelector": '.grid-item'
 							});
-						}, 1000);
+						}, 1500);
 					};
 				});
 			});
@@ -220,6 +220,7 @@ jQuery(function($){
 	}).on('click', '.page-down .glyphicons', function(e){
 		$('html,body').animate({
 			scrollTop: window.innerHeight
+			
 		}, 600);
 	}).on('click', '.video-list li', function(e){
 		$(this).siblings().find('.glyphicons').removeClass('glyphicons-pause').addClass('glyphicons-play-button');
