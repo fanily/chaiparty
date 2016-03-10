@@ -16,7 +16,7 @@ jQuery(function($){
 		$.browser = 'desktop';
 	}
 
-	$.getJSON("config.json?t=1455617074", function(config) {
+	$.getJSON("config.json?t=1455617075", function(config) {
 		var get_fanily_post = function(keyword, callback) {
 			$.ajax({
 				url : config.api+"search/lists/"+keyword,

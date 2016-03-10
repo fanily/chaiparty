@@ -55,16 +55,11 @@
 			{
 				"tab": "十二美釵選拔",
 				"keyword": "十二美釵總決選",
-				"current": true
+				"current": false
 			},
 			{
 				"tab": "釵級比一比",
 				"keyword": "釵級比一比",
-				"current": false
-			},
-			{
-				"tab": "DJ 蕾蕾選歌",
-				"keyword": "蕾蕾選歌",
 				"current": false
 			},
 			{
@@ -75,7 +70,7 @@
 			{
 				"tab": "釵解派對",
 				"keyword": "釵解派對",
-				"current": false
+				"current": true
 			}
 		]
 	}
