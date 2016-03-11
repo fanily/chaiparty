@@ -16,7 +16,7 @@ jQuery(function($){
 		$.browser = 'desktop';
 	}
 
-	$.getJSON("config.json?t=1455617075", function(config) {
+	$.getJSON("config.json?t=1455617078", function(config) {
 		var get_fanily_post = function(keyword, callback) {
 			$.ajax({
 				url : config.api+"search/lists/"+keyword,
@@ -67,6 +67,24 @@ jQuery(function($){
 			video_html += '</li>';
 		});
 		$('.video-list').append(video_html);
+
+		//append songlist
+		var songlist_html = "";
+		$.each(config.songlist, function(k,v){
+			songlist_html += '<div class="song"><span class="title">'+v.title+'</span>';
+			songlist_html += '<div class="info"><iframe class="thumb" src="https://www.youtube.com/embed/'+v.id+'" frameborder="0" allowfullscreen></iframe>';
+			songlist_html += '<div class="box"><a href="https://www.youtube.com/watch?v='+v.id+'" target="_blank">';
+			songlist_html += '<span class="title">'+v.song+'</span></a>';
+			songlist_html += '<span class="singer"><span>By</span> '+v.singer+'</span>';
+			songlist_html += '<div class="chai"><img class="avatars" src="'+v.avatars+'">';
+			if(v.chailink !== "") {
+				songlist_html += '<a href="'+v.chailink+'" target="_blank"><span class="name">'+v.chai+'<span>推薦</span></a></span></div>';
+			} else {
+				songlist_html += '<span class="name">'+v.chai+'<span>推薦</span></span></div>';
+			}
+			songlist_html += '</div></div></div>';
+		});
+		$('.song-list').append(songlist_html);
 
 		//append beauty
 		var beauty_html = "";
