@@ -72,7 +72,9 @@ jQuery(function($){
 		var songlist_html = "";
 		$.each(config.songlist, function(k,v){
 			songlist_html += '<div class="song"><span class="title">'+v.title+'</span>';
-			songlist_html += '<div class="info"><iframe class="thumb" src="https://www.youtube.com/embed/'+v.id+'" frameborder="0" allowfullscreen></iframe>';
+			songlist_html += '<div class="info">';
+			songlist_html += '<img class="thumb" src="http://img.youtube.com/vi/'+v.id+'/hqdefault.jpg">';
+			songlist_html += '<span data-id="'+v.id+'" class="glyphicons glyphicons-play"></span>';
 			songlist_html += '<div class="box"><a href="https://www.youtube.com/watch?v='+v.id+'" target="_blank">';
 			songlist_html += '<span class="title">'+v.song+'</span></a>';
 			songlist_html += '<span class="singer"><span>By</span> '+v.singer+'</span>';
@@ -150,11 +152,11 @@ jQuery(function($){
 					$('#'+id+' .tab').append(tab_html);
 					$('#'+id+' .post-container').append(html);
 					if (v.current) {
-						setTimeout(function() {
+						setInterval(function(){ 
 							$('#'+id+' .post-container .current').find('.grid').masonry({
 								"itemSelector": '.grid-item'
-							});
-						}, 1500);
+							}); 
+						}, 3000);
 					};
 				});
 			});
@@ -307,6 +309,9 @@ jQuery(function($){
 		$post_div.find('.post-content').eq(index).addClass('current').find('.grid').masonry({
 			"itemSelector": '.grid-item'
 		});
+	}).on('click', "#songlist .glyphicons-play", function(e){
+		window.open('https://www.youtube.com/watch?v='+$(this).attr('data-id'), '_blank');
+
 	// }).on('click', '#gallerybody .show-more', function(e){
 	// 	e.stopPropagation();
 	// 	var offset = $('#imageGallery a.show').length;
