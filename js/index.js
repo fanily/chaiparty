@@ -68,6 +68,37 @@ jQuery(function($){
 		});
 		$('.video-list').append(video_html);
 
+		//append character
+		var character_html = "";
+		$.each(config.character, function(k,name){
+			character_html += '<div class="character" data-id="'+k+'">';
+			if (window.devicePixelRatio === 2) {
+				character_html += '<img src="img/character/thumb/'+k+'@2x.jpg">';
+			} else {
+				character_html += '<img src="img/character/thumb/'+k+'.jpg">';
+			}
+			
+			character_html += '<span>'+name+'</span></div>';
+			k++;
+		});
+		$('#cast .character-list').append(character_html);
+
+
+		//append beauty
+		var beauty_html = "";
+		$.each(config.beauty, function(k,title){
+			k++;
+			beauty_html += '<a href="img/beauty/'+k+'.jpg" data-sub-html="'+title+'">';
+			beauty_html += '<img src="img/beauty/thumb/'+k+'.jpg">';
+			beauty_html += '</a>';
+		});
+		$('#imageGallery').append(beauty_html).lightGallery({
+			thumbnail: true,
+			showThumbByDefault: true,
+			download: false
+		});
+		$('#imageGallery a').addClass('show');
+
 		//append songlist
 		var songlist_html = "";
 		$.each(config.songlist, function(k,v){
@@ -87,30 +118,6 @@ jQuery(function($){
 			songlist_html += '</div></div></div>';
 		});
 		$('.song-list').append(songlist_html);
-
-		//append beauty
-		var beauty_html = "";
-		$.each(config.beauty, function(k,title){
-			k++;
-			beauty_html += '<a href="img/beauty/'+k+'.jpg" data-sub-html="'+title+'">';
-			beauty_html += '<img src="img/beauty/thumb/'+k+'.jpg">';
-			beauty_html += '</a>';
-		});
-		$('#imageGallery').append(beauty_html).lightGallery({
-			thumbnail: true,
-			showThumbByDefault: true,
-			download: false
-		});
-		$('#imageGallery a').addClass('show');
-
-		// beauty addClass show, beauty show-more addClass show
-		// var beauty_count = $('#imageGallery a').length;
-		// if (beauty_count <= 8) {
-		// 	$('#imageGallery a').addClass('show');
-		// } else {
-		// 	$('#imageGallery a:lt(8)').addClass('show');
-		// 	$('#gallerybody .show-more').addClass('show');
-		// }
 
 		// append post
 		$.each(config.keywords, function(id, data){
@@ -312,18 +319,18 @@ jQuery(function($){
 	}).on('click', "#songlist .glyphicons-play", function(e){
 		window.open('https://www.youtube.com/watch?v='+$(this).attr('data-id'), '_blank');
 
-	// }).on('click', '#gallerybody .show-more', function(e){
-	// 	e.stopPropagation();
-	// 	var offset = $('#imageGallery a.show').length;
-	// 	var count = $('#imageGallery a').length;
+	}).on('click', '#cast .character', function(e){
+		var id = $(this).attr('data-id');
+		$('.cast-lightbox .left-col img').attr('src', 'img/character/'+id+'.jpg');
+		$('.cast-lightbox .right-col[data-id='+id+']').addClass('show');
 
-	// 	offset += 8;
-	// 	$('#imageGallery a:lt('+offset+')').addClass('show');
-
-	// 	if (offset >= count) {
-	// 		$(this).remove();
-	// 		$('.imageGallery').css({'padding-bottom':'0'});
-	// 	}
+		$('.cast-lightbox').addClass('show');
+		$('body').css({'overflow':'hidden'});
+	}).on('click', '.cast-lightbox .close', function(e){
+		$('.cast-lightbox .right-col').removeClass('show');
+		$('.cast-lightbox').removeClass('show');
+		
+		$('body').css({'overflow':'auto'});
 	});
 
 	var clip = new ZeroClipboard( $(".share-ul li.copy") );
