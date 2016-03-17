@@ -1,8 +1,9 @@
 var scroll_to_mute = function(){
 	if( window.pageYOffset > $(window).height() ){
-		player.setVolume(0);
+		player.mute();
 	}else if( window.pageYOffset <= $(window).height() ){
 		//根據滑動高度決定音量
+		player.unMute();
 		player.setVolume(parseInt(100*(($(window).height() - window.pageYOffset)/$(window).height())));
 	}
 }
@@ -50,7 +51,12 @@ jQuery(function($){
 			});
 		}else{
 	    	$.getScript("js/jquery.tubular.min.js?t=2").done(function() {
-				$('#background-video').tubular({videoId: config.video[0] , mute : false});
+	    		var mute_status = window.pageYOffset > $(window).height();
+	    		$('#background-video').tubular({
+					videoId: config.video[0] , 
+					mute : mute_status
+				});
+
 				window.addEventListener('scroll', scroll_to_mute , false);
 			});
 		}
@@ -169,6 +175,16 @@ jQuery(function($){
 			});
 		});
 
+		if (window.location.hash !== "") {
+			var target = $(window.location.hash);
+			target = target.length ? target : $('[name=' + window.location.hash.slice(1) +']');
+			if (target.length) {
+				$('html,body').animate({
+					scrollTop: target.offset().top
+				}, 1000);
+				return false;
+			}
+		}
 	});
 
 	if ($.browser !== 'desktop') {
@@ -198,8 +214,10 @@ jQuery(function($){
 			var target = $(this.hash);
 			target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
 			if (target.length) {
+				window.location.hash = this.hash;
+
 				$('html,body').animate({
-						scrollTop: target.offset().top
+					scrollTop: target.offset().top
 				}, 1000);
 				return false;
 			}
@@ -218,6 +236,8 @@ jQuery(function($){
 		var target = $(this.hash);
 		target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
 		if (target.length) {
+			window.location.hash = this.hash;
+			
 			$('html,body').animate({
 					scrollTop: target.offset().top
 			}, 1000);
@@ -234,11 +254,14 @@ jQuery(function($){
 		}
 	}).on('click', '.nav-ul a', function(e){
 		$('.menu .hamburger').click();
+
 		var target = $(this.hash);
 		target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
 		if (target.length) {
+			window.location.hash = this.hash;
+			
 			$('html,body').animate({
-					scrollTop: target.offset().top
+				scrollTop: target.offset().top
 			}, 1000);
 			return false;
 		}
@@ -251,8 +274,8 @@ jQuery(function($){
 	}).on('click', '.page-down .glyphicons', function(e){
 		$('html,body').animate({
 			scrollTop: window.innerHeight
-			
 		}, 600);
+
 	}).on('click', '.video-list li', function(e){
 		$(this).siblings().find('.glyphicons').removeClass('glyphicons-pause').addClass('glyphicons-play-button');
 		$(this).find('.glyphicons').removeClass('glyphicons-play-button').addClass('glyphicons-pause');
